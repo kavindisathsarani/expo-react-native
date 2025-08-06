@@ -3,6 +3,7 @@ import React, { use } from "react"
 import { Link, Slot, usePathname } from "expo-router"
 import "./../global.css"
 import FooterNav from "@/components/FooterNav"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 const RootLayout = () => {
   const pathname = usePathname();
@@ -11,15 +12,13 @@ const RootLayout = () => {
   const hideFooter = ["/signup", "/login"].includes(pathname);
 
   return (
-    <View style={{ flex: 1, width: "100%" }} className="bg-gradient-to-b from-slate-50 to-slate-100">
-      {/* Main Content Area */}
-      <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, width: "100%" }} 
+    className="bg-gradient-to-b">
+   
         <Slot />
-      </View>
-      
-      {/* Bottom Navigation Bar - Only show if not on login/signup */}
+  
       {hideFooter ? null : <FooterNav />}
-    </View>
+    </SafeAreaView>
   )
 }
 
