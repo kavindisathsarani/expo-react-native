@@ -1,10 +1,15 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Link, router } from 'expo-router'
+import { Link, router, useRouter, useSegments } from 'expo-router'
 
 const FooterNav = () => {
+  const router = useRouter();
+
+  const segment = useSegments();
+  const activeRouter = segment[0] ?? ("" as string);
 
   return (
+    
     <View className="absolute bottom-0 left-0 right-0 bg-white px-4 py-4 pb-10 shadow-lg rounded-t-3xl">
       <View className="flex-row justify-between items-center flex-wrap gap-2">
         {/* Home Button */}
