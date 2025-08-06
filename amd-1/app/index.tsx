@@ -1,40 +1,41 @@
-import { View, Text, TextInput } from "react-native"
-import React from "react"
-import { Link } from "expo-router"
+import { View, Text } from "react-native";
+import React from "react";
 
-// <div> - <View>
-// p, h1 - h6 - <Text>
-// don't use text without Text tag
-// not work vh, dhv use flex : 1
 const Index = () => {
   return (
     <View
       style={{
         flex: 1,
-        width: "100%"
-        // justifyContent: "center",
-        // alignItems: "center"
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#1E3A8A", // blue-900
+        padding: 24,
       }}
     >
       <Text
         style={{
-          color: "#fff"
+          fontSize: 40,
+          fontWeight: "bold",
+          color: "#FBBF24", // yellow-400
+          marginBottom: 16,
         }}
       >
-        index
+        🌟 Hello, Explorer!
       </Text>
+
       <Text
         style={{
-          color: "#fff",
-          fontSize: 23
+          fontSize: 16,
+          color: "#E5E7EB", // gray-200
+          textAlign: "center",
+          maxWidth: 300,
+          lineHeight: 24,
         }}
       >
-        hello
+        Check out the tabs to unlock exciting tools and sections.
       </Text>
-     
-      {/* <TextInput /> */}
     </View>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

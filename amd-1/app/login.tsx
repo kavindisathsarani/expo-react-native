@@ -1,16 +1,23 @@
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { router } from "expo-router";
+import "./../global.css";
 
 const Login = () => {
   const { isUser, login, logout } = useAuth();
   
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
-    if (!email || !password) {
+    if(username === "admin" && password === "1234") {
+     login();
+     router.replace("/")
+    }
+
+    if (!username || !password) {
       Alert.alert("Error", "Please fill in all fields");
       return;
     }
@@ -27,7 +34,7 @@ const Login = () => {
 
   const handleLogout = () => {
     logout();
-    setEmail("");
+    setUsername("");
     setPassword("");
   };
 
@@ -41,16 +48,15 @@ const Login = () => {
 
         {!isUser ? (
           <>
-            {/* Email Input */}
+            {/* Username Input */}
             <Text className="text-base font-semibold text-gray-700 mb-2">
-              Email Address
+              Username
             </Text>
             <TextInput
               className="w-full h-12 border border-gray-300 rounded-lg px-4 mb-5 bg-gray-50 text-base"
-              placeholder="Enter your email"
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
+              placeholder="Enter your username"
+              value={username}
+              onChangeText={setUsername}
               autoCapitalize="none"
               editable={!isLoading}
               placeholderTextColor="#9CA3AF"
@@ -79,7 +85,7 @@ const Login = () => {
               disabled={isLoading}
             >
               <Text className="text-white text-base font-bold">
-                {isLoading ? "Signing In..." : "Sign In"}
+                {isLoading ? "Signing In..." : "Login"}
               </Text>
             </TouchableOpacity>
 
@@ -102,7 +108,7 @@ const Login = () => {
             </Text>
             
             <Text className="text-gray-400 text-sm text-center mb-6">
-              Email: {email}
+              Username: {username}
             </Text>
             
             <TouchableOpacity
