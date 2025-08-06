@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { router } from "expo-router";
-import "./../global.css";
+
 
 const Login = () => {
   const { isUser, login, logout } = useAuth();
